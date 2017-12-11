@@ -91,5 +91,92 @@ namespace SuperCoolTest
 
       return foods;
     }
+
+    [HttpGet("[action]")]
+    public List<Meal> GetDiary()
+    {
+      var diary = new List<Meal>();
+
+      diary.Add(new Meal()
+      {
+        name = "Breakfast",
+        foods = new List<Food>() { new Food()
+          {
+            name = "Blueberry Waffles",
+            macros = new Macros()
+            {
+              carb = 30,
+              fat = 15,
+              protein = 5
+            },
+            micros = new Micros()
+            {
+              sodium = 3000,
+              sugar = 30
+            },
+            servingSize = 1,
+            servingMeasurement = "waffle"
+          }
+        }
+      });
+
+      diary.Add(new Meal()
+      {
+        name = "Lunch",
+        foods = new List<Food>() { new Food()
+          {
+            name = "Chipotle",
+            macros = new Macros()
+            {
+              carb = 90,
+              fat = 22,
+              protein = 55
+            }
+          }
+        }
+      });
+
+      diary.Add(new Meal()
+      {
+        name = "Dinner",
+        foods = new List<Food>() {
+          new Food()
+          {
+            name = "Steak",
+            macros = new Macros()
+            {
+              carb = 0,
+              fat = 22,
+              protein = 30
+            }
+          }
+        }
+      });
+
+      diary.Add(new Meal()
+      {
+        name = "Snacks",
+        foods = new List<Food>() { new Food()
+          {
+            name = "Blueberry Waffles",
+            macros = new Macros()
+            {
+              carb = 30,
+              fat = 15,
+              protein = 5
+            },
+            micros = new Micros()
+            {
+              sodium = 3000,
+              sugar = 30
+            },
+            servingSize = 1,
+            servingMeasurement = "waffle"
+          }
+        }
+      });
+
+      return diary;
+    }
   }
 }
