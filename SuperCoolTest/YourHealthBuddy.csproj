@@ -7,7 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="super-cool-app\" />
+    <Compile Remove="super-cool-app\**" />
+    <Content Remove="super-cool-app\**" />
+    <EmbeddedResource Remove="super-cool-app\**" />
+    <None Remove="super-cool-app\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

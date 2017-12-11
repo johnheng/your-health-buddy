@@ -1,0 +1,15 @@
+<mat-card>
+    <mat-card-title>
+        {{mealName}}
+    </mat-card-title>
+    <mat-card *ngFor="let food of foods">
+        <mat-card-title>
+            {{food.name}}
+        </mat-card-title>
+        <mat-card-subtitle>
+            Carbs: {{food.macros.carb}}
+            Fat: {{food.macros.fat}}
+            Protein: {{food.macros.protein}}
+        </mat-card-subtitle>
+    </mat-card>
+</mat-card>
