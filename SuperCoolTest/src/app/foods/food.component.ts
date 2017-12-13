@@ -6,7 +6,7 @@ import { Http, URLSearchParams } from '@angular/http'
   templateUrl: './food.component.html'
 })
 
-export class FoodComponent implements OnInit {
+export class FoodComponent {
   constructor(private _httpService: Http) { }
   @Input() food: any;
 }
