@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.Swagger;
 using YourHealthBuddy.Contexts;
 using System.IO;
+using YourHealthBuddy.Models;
 
 namespace SuperCoolTest
 {
@@ -72,6 +73,105 @@ namespace SuperCoolTest
       app.UseMvcWithDefaultRoute();
       app.UseDefaultFiles();
       app.UseStaticFiles();
+
+      using (var serviceScope = app.ApplicationServices.CreateScope())
+      {
+        var context = serviceScope.ServiceProvider.GetService<DatabaseContext>();
+        SeedFoods(context);
+        SeedMeals(context);
+      }
+    }
+
+    public void SeedFoods(DatabaseContext db)
+    {
+      db.Foods.Attach(new Food()
+      {
+        name = "Blueberry Waffles",
+        macros = new Macros()
+        {
+          carb = 30,
+          fat = 15,
+          protein = 5
+        },
+        micros = new Micros()
+        {
+          sodium = 3000,
+          sugar = 30
+        },
+        servingSize = 1,
+        servingMeasurement = "waffle"
+      });
+
+      db.Foods.Attach(new Food()
+      {
+        name = "Chipotle",
+        macros = new Macros()
+        {
+          carb = 90,
+          fat = 22,
+          protein = 55
+        }
+      });
+
+      db.Foods.Attach(new Food()
+      {
+        name = "Salt & Vinegar Chips",
+        macros = new Macros()
+        {
+          carb = 33,
+          fat = 9,
+          protein = 2
+        }
+      });
+
+      db.Foods.Attach(new Food()
+      {
+        name = "Steak",
+        macros = new Macros()
+        {
+          carb = 0,
+          fat = 22,
+          protein = 30
+        }
+      });
+
+      db.SaveChanges();
+    }
+
+    public void SeedMeals(DatabaseContext db)
+    {
+      var myMeal = new Meal()
+      {
+        name = "Dinner",
+        foods = db.Foods.ToList()
+      };
+
+      db.Meals.Attach(new Meal()
+      {
+        name = "Lunch",
+        foods = new List<Food>()
+        {
+          new Food()
+          {
+            name = "Blueberry Waffles",
+            macros = new Macros()
+            {
+              carb = 30,
+              fat = 15,
+              protein = 5
+            },
+            micros = new Micros()
+            {
+              sodium = 3000,
+              sugar = 30
+            },
+            servingSize = 1,
+            servingMeasurement = "waffle"
+          }
+        }
+      });
+
+      db.SaveChanges();
     }
   }
 }

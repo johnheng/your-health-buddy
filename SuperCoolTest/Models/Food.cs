@@ -17,6 +17,7 @@ namespace YourHealthBuddy.Models
 
   public class Macros
   {
+    public string id { get; set; }
     public int carb { get; set; }
     public int fat { get; set; }
     public int protein { get; set; }
@@ -24,6 +25,7 @@ namespace YourHealthBuddy.Models
 
   public class Micros
   {
+    public string id { get; set; }
     public int sodium { get; set; }
     public int fiber { get; set; }
     public int vitaminC { get; set; }

@@ -7,6 +7,7 @@ namespace YourHealthBuddy.Models
 {
   public class Meal
   {
+    public string id { get; set; }
     public string name { get; set; }
     public List<Food> foods { get; set; }
   }
